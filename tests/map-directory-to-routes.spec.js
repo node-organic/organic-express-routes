@@ -1,26 +1,7 @@
 describe("map directory to routes", function(){
   var Plasma = require("organic-plasma")
   var ExpressRoutes = require("../index")
-
-  var MockExpressServerChemical = function(){
-    this.type = "MockExpressServer";
-    var app = this.data = {};
-    var routes = this.routes = {};
-    ["get", "post", "put", "delete"].forEach(function(method){
-      app[method] = function(url, handler) {
-        if(!routes[method])
-          routes[method] = {}
-        if(!routes[method][url]) {
-          routes[method][url] = handler
-        } else {
-          var firsthandler = routes[method][url]
-          routes[method][url] = []
-          routes[method][url].push(firsthandler)
-          routes[method][url].push(handler)
-        }
-      }
-    })
-  }
+  var MockExpressServerChemical = require("./helpers/mock-express-app-chemical")
 
   it("loads all files in directory", function(next){
     var expressAppChemical = new MockExpressServerChemical()

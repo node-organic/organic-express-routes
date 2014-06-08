@@ -1,5 +1,8 @@
-module.exports = function(){
+module.exports = function(plasma, dna, helpers){
   return {
-    "GET": function(){}
+    "GET": function(){},
+    "POST": function(){
+      return helpers["index"]()
+    }
   }
 }

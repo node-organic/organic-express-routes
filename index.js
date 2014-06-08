@@ -74,6 +74,7 @@ module.exports = function(plasma, dna) {
         })
       })
     }
+    else
     if(dna.path)
       loadActions(app, plasma, dna, {}, function(){
         if(dna.emitReady) 
