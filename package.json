@@ -1,0 +1,29 @@
+{
+  "name": "organic-express-routes",
+  "version": "0.0.0",
+  "description": "Organelle for `glob`-ing a directory of actions modules and mounting them to expressjs app",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "glob-stream": "~3.1.11",
+    "sort-stream": "~1.0.0"
+  },
+  "devDependencies": {
+    "organic-plasma": "~0.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/outbounder/organic-express-routes.git"
+  },
+  "author": "Boris Filipov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/outbounder/organic-express-routes/issues"
+  },
+  "homepage": "https://github.com/outbounder/organic-express-routes"
+}
