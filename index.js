@@ -49,6 +49,8 @@ var loadActions = function(app, plasma, dna, helpers, done) {
             url = url.replace("/index", "")
           if(dna.mount)
             url = dna.mount+url
+          if(url == "")
+            url = "/"
           if(method == "*")
             app.all(url, api[key])
           else
