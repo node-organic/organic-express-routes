@@ -9,8 +9,8 @@ var loadHelpers = function(app, plasma, dna, done){
   // glob for action helpers
   glob.create(path.join(routesHelpersRootPath, dna.pattern))
     .on("data", function(file){
-      var helperId = file.path.split(routesHelpersRootPath).pop().replace("/","")
-      helperId = helperId.replace(path.extname(file.path), "")
+      var helperId = file.path.split(routesHelpersRootPath).pop().replace("/","").replace(/\//g, path.sep)
+      helperId = helperId.replace(path.extname(file.path), "").replace(new RegExp(path.sep,"g"), "/")
       helpers[helperId] = require(file.path)
       if(dna.log)
         console.log("loaded helper", helperId, "->",file.path.split(routesHelpersRootPath).pop())
@@ -42,7 +42,7 @@ var loadActions = function(app, plasma, dna, helpers, done) {
         if(key.indexOf(" ") !== -1 || methods.indexOf(key) !== -1) {
           var method = key.split(" ").shift()
           var url = file.path.split(routesRootPath).pop()
-          url = url.replace(path.extname(file.path), "")
+          url = url.replace(path.extname(file.path), "").replace(new RegExp(path.sep,"g"), "/")
           if(key.indexOf(" ") !== -1)
             url += key.split(" ").pop()
           if(url.indexOf("/index") != -1)
