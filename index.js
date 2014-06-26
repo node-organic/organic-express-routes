@@ -10,7 +10,8 @@ var loadHelpers = function(app, plasma, dna, done){
   glob.create(path.join(routesHelpersRootPath, dna.pattern))
     .on("data", function(file){
       var helperId = file.path.split(routesHelpersRootPath).pop().replace("/","").replace(/\//g, path.sep)
-      helperId = helperId.replace(path.extname(file.path), "").replace(new RegExp(path.sep,"g"), "/")
+      var sep = path.sep == "\\" ? "\\\\" : path.sep;
+      helperId = helperId.replace(path.extname(file.path), "").replace(new RegExp(sep,"g"), "/")
       helpers[helperId] = require(file.path)
       if(dna.log)
         console.log("loaded helper", helperId, "->",file.path.split(routesHelpersRootPath).pop())
