@@ -42,7 +42,8 @@ var loadActions = function(app, plasma, dna, helpers, done) {
         if(key.indexOf(" ") !== -1 || methods.indexOf(key) !== -1) {
           var method = key.split(" ").shift()
           var url = file.path.split(routesRootPath).pop()
-          url = url.replace(path.extname(file.path), "").replace(new RegExp(path.sep,"g"), "/")
+          var sep = path.sep == "\\" ? "\\\\" : path.sep;
+          url = url.replace(path.extname(file.path), "").replace(new RegExp(sep,"g"), "/")
           if(key.indexOf(" ") !== -1)
             url += key.split(" ").pop()
           if(url.indexOf("/index") != -1)
