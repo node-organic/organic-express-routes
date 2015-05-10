@@ -49,6 +49,8 @@ var loadActions = function(app, plasma, dna, helpers, done) {
             url += key.split(" ").pop()
           if(url.indexOf("/index") != -1)
             url = url.replace("/index", "")
+          if(url.indexOf('/_') != -1)
+            url = url.replace(new RegExp('/_', 'g'), '/:')
           if(dna.mount)
             url = dna.mount+url
           if(url == "")

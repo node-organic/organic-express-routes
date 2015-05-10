@@ -1,4 +1,4 @@
-# organic-express-routes
+# organic-express-routes v0.1.0
 
 Organelle for `glob`-ing a directory of actions modules and mounting them to expressjs app
 
@@ -44,3 +44,56 @@ Indicates the type of the chemical to be emitted once loading and mounting is co
         }
       }
     }
+    
+## usage 101
+
+Having directory structure 
+
+  ```
+  + project_root
+  |-+ routes
+    |-+ api
+      |-+ users
+        |-+ _user
+          |- index.js
+          |- validate.js
+        |- index.js 
+      |- index.js
+      |- version.js
+    |-+ site
+      |- index.js
+      |- about.js
+  ```
+
+* assuming every `.js` file contains the following source
+
+        ```
+        module.exports = function(plasma, dna, helpers) {
+          return {
+            "GET": function(req, res, next){
+              console.info(req, res, next)
+            }
+          }
+        }
+        ```
+
+* assuming organic-express-routes has been initiated with following dna
+
+        ```
+        {
+          "path": "routes/api",
+          "mount": "/api",
+          ...
+        }
+        ```
+
+Will mount all found actions within files respecting their location relative to the `dna.path` property value in the following **order**:
+
+| route | file |
+| ----- | ---- |
+| GET /api | /api/index.js |
+| GET /api/version | /api/version.js |
+| GET /api/users | /api/users/index.js |
+| GET /api/users/:user | /api/users/_user/index.js |
+| GET /api/users/:user/validate | /api/users/_user/validate.js |
+
