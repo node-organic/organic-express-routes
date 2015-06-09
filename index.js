@@ -1,7 +1,9 @@
 var path = require("path")
 var glob = require("glob-stream")
 var sort = require('sort-stream')
-var methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+var methods = require('methods').map(function(m){
+  return m.toUpperCase()
+})
 
 var loadHelpers = function(app, plasma, dna, done){
   var helpers = {}
