@@ -1,6 +1,6 @@
 {
   "name": "organic-express-routes",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Organelle for `glob`-ing a directory of actions modules and mounting them to expressjs app",
   "main": "index.js",
   "directories": {
