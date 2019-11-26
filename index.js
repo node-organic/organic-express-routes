@@ -118,7 +118,7 @@ module.exports = function (plasma, dna) {
       loadHelpers(app, plasma, dna, function (helpers) {
         loadActions(app, plasma, dna, helpers, function () {
           if (dna.emitReady) {
-            plasma.emit(dna.emitReady, true)
+            plasma.emit(dna.emitReady)
           }
         })
       })
@@ -126,7 +126,7 @@ module.exports = function (plasma, dna) {
     if (dna.path) {
       loadActions(app, plasma, dna, {}, function () {
         if (dna.emitReady) {
-          plasma.emit(dna.emitReady, true)
+          plasma.emit(dna.emitReady)
         }
       })
     }
